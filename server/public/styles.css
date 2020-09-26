@@ -1,0 +1,11 @@
+body {
+	font-size: medium;
+}
+
+img {
+	height: 300px;
+	width: 373px;
+	object-fit: scale-down;
+	position: relative;
+	right: 15px;
+}
