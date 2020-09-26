@@ -35,6 +35,26 @@ from "products"
     }).catch(err => next(err));
 });
 
+app.get('/api/products/:productId', (req, res, next) => {
+  const productId = parseInt(req.params.productId, 10);
+  const sql = `
+select *
+  from "products"
+ where "productId" = $1
+`;
+  const params = [productId];
+  db.query(sql, params)
+    .then(result => {
+      const product = result.rows[0];
+      if (product === undefined) {
+        next(new ClientError('Product does not exist', 404));
+      } else {
+        res.json(product);
+      }
+
+    }).catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
