@@ -9,7 +9,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount(productId) {
-    fetch(`api/products/${productId}`)
+    fetch('api/products/1')
       .then(res => res.json())
       .then(product => {
         for (const keys in this.state.product) {

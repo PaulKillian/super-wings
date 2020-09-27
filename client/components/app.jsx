@@ -20,7 +20,7 @@ class App extends React.Component {
       view: {
         name: 'details',
         params: {
-          products: params
+          params
         }
       }
     });
@@ -39,7 +39,6 @@ class App extends React.Component {
         <div>
           <Header />
           <ProductDetails />
-          <ProductList onClick={this.setView}/>
         </div>
       );
     }

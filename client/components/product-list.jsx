@@ -14,7 +14,7 @@ class ProductList extends React.Component {
     this.getProducts();
   }
 
-  getProducts(props) {
+  getProducts() {
     fetch('./api/products')
       .then(res => res.json())
       .then(products => {
@@ -29,8 +29,8 @@ class ProductList extends React.Component {
       <div className="d-flex flex-wrap justify-content-center col-12">
         {this.state.products.map(products => {
           return (
-            <ProductListItem onClick={() => this.setView(products.name, products.id)}
-              key={products.id}
+            <ProductListItem onClick={() => this.setView(products.name, products.productId)}
+              key={products.productId}
               image={products.image}
               name={products.name}
               price={products.price}
