@@ -1,12 +1,6 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
 
-const express = require('../../node_modules/express');
-
-const app = express();
-
-app.use(express.json());
-
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
@@ -20,22 +14,30 @@ class ProductList extends React.Component {
     this.getProducts();
   }
 
-  // getProducts() {
-  //   fetch('/api/products')
-  //     .then(res => res.json())
-  //     .then(grades => this.setState({ products: products }))
-  //     .catch(err => console.error(err));
-  // }
+  getProducts() {
+    fetch('./api/products')
+      .then(res => res.json())
+      .then(products => {
+        this.setState({
+          products: products
+        });
+      }).catch(err => console.error(err));
+  }
 
   render() {
     return (
       <div className="d-flex flex-wrap justify-content-center col-12">
-        <ProductListItem />
-        <ProductListItem />
-        <ProductListItem />
-        <ProductListItem />
-        <ProductListItem />
-        <ProductListItem />
+        {this.state.products.map(products => {
+          return (
+            <ProductListItem onClick={() => this.setView(products.name, products.productId)}
+              key={products.productId}
+              image={products.image}
+              name={products.name}
+              price={products.price}
+              description={products.shortDescription}
+            />
+          );
+        })}
       </div>
     );
   }
