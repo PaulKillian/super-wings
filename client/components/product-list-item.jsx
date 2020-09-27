@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ProductListItem() {
+function ProductListItem(props) {
   return (
     <div className="shadow mr-5 col-3 mt-5">
-      <img src=""></img>
-      <div className="mb-2"></div>
-      <div className="mb-2"></div>
-      <div className="mb-5"></div>
+      <img src={props.image}></img>
+      <div className="mb-2" >{props.name}</div>
+      <div className="mb-2">${props.price}</div>
+      <div className="mb-5">{props.description}</div>
     </div>
   );
 }

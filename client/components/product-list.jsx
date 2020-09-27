@@ -29,7 +29,7 @@ class ProductList extends React.Component {
       <div className="d-flex flex-wrap justify-content-center col-12">
         {this.state.products.map(products => {
           return (
-            <ProductListItem onClick={(this.setView)}
+            <ProductListItem onClick={() => this.setView(products.name, products.id)}
               key={products.id}
               image={products.image}
               name={products.name}
