@@ -1,24 +1,18 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
 
-const express = require('../../node_modules/express');
-
-const app = express();
-
-app.use(express.json());
-
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       products: []
     };
-    this.getProducts = this.getProducts.bind(this);
+    // this.getProducts = this.getProducts.bind(this);
   }
 
-  componentDidMount() {
-    this.getProducts();
-  }
+  // componentDidMount() {
+  //   this.getProducts();
+  // }
 
   // getProducts() {
   //   fetch('/api/products')
