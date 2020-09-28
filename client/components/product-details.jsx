@@ -23,7 +23,7 @@ class ProductDetails extends React.Component {
       return (
         <div className="col-10 ml-5 shadow">
           <div className="">
-            <p className="pointer">Back to Catalog</p>
+            <p className="pointer" onClick={() => this.props.setView('catalog', {})}>Back to Catalog</p>
             <div className="d-flex flex-wrap">
               <img className="ml-3" src="images\shake-weight.jpg"></img>
               <div>
