@@ -140,7 +140,7 @@ app.post('/api/cart/:productId', (req, res, next) => {
                 });
             });
         });
-    });
+    }).catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
