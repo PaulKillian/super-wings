@@ -25,11 +25,11 @@ class ProductDetails extends React.Component {
           <div className="">
             <p className="pointer" onClick={() => this.props.setView('catalog', {})}>Back to Catalog</p>
             <div className="d-flex flex-wrap">
-              <img className="ml-3" src="images\shake-weight.jpg"></img>
+              <img className="ml-3" src={this.state.product.image}></img>
               <div>
-                <h2>Shake Weight</h2>
-                <h3>$29.99</h3>
-                <h4>Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.</h4>
+                <h2>{this.state.product.name}</h2>
+                <h3>${this.state.product.price / 100}</h3>
+                <h4>{this.state.product.shortDescription}</h4>
               </div>
             </div>
             <div>{this.state.product.longDescription}</div>
