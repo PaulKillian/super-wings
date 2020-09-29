@@ -47,7 +47,7 @@ select *
     .then(result => {
       const product = result.rows[0];
       if (product === undefined) {
-        next(new ClientError('Product does not exist', 404));
+        throw new ClientError('Product does not exist', 404);
       } else {
         res.json(product);
       }
