@@ -40,9 +40,7 @@ class App extends React.Component {
 
   getCartItems() {
     fetch('/api/cart')
-      .then(res => res.json())
-    // this.setState({ cart: receivedItems })
-      .catch(error => console.error(error));
+      .then(res => res.json());
   }
 
   addToCart(product) {
@@ -54,7 +52,7 @@ class App extends React.Component {
       body: JSON.stringify(product)
     })
       .then(res => res.json())
-    // this.setState({ cart: receivedItems })
+      .then()
       .catch(error => console.error(error));
   }
 
