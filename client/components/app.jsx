@@ -10,7 +10,8 @@ class App extends React.Component {
       view: {
         name: 'catalog',
         params: {}
-      }
+      },
+      cart: []
     };
     this.setView = this.setView.bind(this);
   }
@@ -33,11 +34,35 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(res => res.json())
+    // this.setState({ cart: receivedItems })
+      .catch(error => console.error(error));
+  }
+
+  addToCart(product) {
+    fetch('/api/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+      .then(res => res.json())
+    // this.setState({ cart: receivedItems })
+      .catch(error => console.error(error));
+  }
+
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header />
+          <Header items={this.state.cart[0]}/>
           <ProductList setView={this.setView} />
         </div>
       );
@@ -45,7 +70,7 @@ class App extends React.Component {
       return (
         <div>
           <Header />
-          <ProductDetails productId={this.state.view.params.productId} setView={this.setView}/>
+          <ProductDetails productId={this.state.view.params.productId} setView={this.setView} addToCart={this.addToCart}/>
         </div>
       );
     }
