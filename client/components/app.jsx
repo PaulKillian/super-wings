@@ -16,14 +16,21 @@ class App extends React.Component {
   }
 
   setView(name, params) {
-    this.setState({
-      view: {
-        name: 'details',
-        params: {
-          params
+    if (name === 'catalog') {
+      this.setState({
+        view: {
+          name: 'catalog',
+          params: {}
         }
-      }
-    });
+      });
+    } else {
+      this.setState({
+        view: {
+          name: name,
+          params: params
+        }
+      });
+    }
   }
 
   render() {
@@ -31,14 +38,14 @@ class App extends React.Component {
       return (
         <div>
           <Header />
-          <ProductList onClick={this.setView} />
+          <ProductList setView={this.setView} />
         </div>
       );
     } else {
       return (
         <div>
           <Header />
-          <ProductDetails />
+          <ProductDetails productId={this.state.view.params.productId} setView={this.setView}/>
         </div>
       );
     }
