@@ -43,9 +43,7 @@ class App extends React.Component {
     fetch('/api/cart')
       .then(res => res.json(res))
       .then(receivedItems => {
-        const newState = [];
-        newState.push(receivedItems);
-        this.setState({ cart: newState });
+        this.setState({ cart: receivedItems });
       })
       .catch(error => console.error(error));
   }
@@ -57,27 +55,28 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(product)
-    }).then(addedItem => {
-      const newItem = this.state.cart.slice();
-      newItem[0].push(product);
-      this.setState({ cart: newItem });
-    }).catch(error => console.error(error));
+    }).then(res => res.json())
+      .then(addedItem => {
+        const newItem = this.state.cart.slice();
+        newItem.push(addedItem);
+        this.setState({ cart: newItem });
+      }).catch(error => console.error(error));
   }
 
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header />
+          <Header items={this.state.cart.length} />
           <ProductList setView={this.setView} />
         </div>
       );
     } else {
       return (
         <div>
-          <Header items={this.state.cart[0].length} />
+          <Header items={this.state.cart.length} />
           <ProductDetails productId={this.state.view.params.productId}
-            setView={this.setView} addToCart={this.addToCart}/>
+            setView={this.setView} addToCart={this.addToCart} />
         </div>
       );
     }
