@@ -19,28 +19,12 @@ class App extends React.Component {
   }
 
   setView(name, params) {
-    if (name === 'catalog') {
-      this.setState({
-        view: {
-          name: name,
-          params: {}
-        }
-      });
-    } else if (name === 'cart') {
-      this.setState({
-        view: {
-          name: name,
-          params: {}
-        }
-      });
-    } else {
-      this.setState({
-        view: {
-          name: 'details',
-          params: params
-        }
-      });
-    }
+    this.setState({
+      view: {
+        name: name,
+        params: params
+      }
+    });
   }
 
   componentDidMount() {
@@ -82,8 +66,9 @@ class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <Header />
-          <CartSummary cartItem={this.state.cart} setView={this.setView} totalPrice={this.state.cart}/>
+          <Header items={this.state.cart.length} />
+          <CartSummary cartItem={this.state.cart} setView={this.setView}
+            totalPrice={this.state.cart}/>
         </div>
       );
     } else {
