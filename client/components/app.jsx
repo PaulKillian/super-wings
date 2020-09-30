@@ -41,7 +41,13 @@ class App extends React.Component {
 
   getCartItems() {
     fetch('/api/cart')
-      .then(res => res.json(res));
+      .then(res => res.json(res))
+      .then(receivedItems => {
+        const newState = [];
+        newState.push(receivedItems);
+        this.setState({ cart: newState });
+      })
+      .catch(error => console.error(error));
   }
 
   addToCart(product) {
@@ -52,12 +58,8 @@ class App extends React.Component {
       },
       body: JSON.stringify(product)
     }).then(addedItem => {
-      let newItem = [];
-      if (this.state.cart.length === 0) {
-        newItem.push(product);
-      } else {
-        newItem = this.state.cart.concat(product);
-      }
+      const newItem = this.state.cart.slice();
+      newItem[0].push(product);
       this.setState({ cart: newItem });
     }).catch(error => console.error(error));
   }
@@ -73,7 +75,7 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <Header items={this.state.cart.length} />
+          <Header items={this.state.cart[0].length} />
           <ProductDetails productId={this.state.view.params.productId}
             setView={this.setView} addToCart={this.addToCart}/>
         </div>
