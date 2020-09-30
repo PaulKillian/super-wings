@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'catalog',
         params: {}
       },
       cart: []
@@ -88,8 +88,7 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <Header items={this.state.cart.length} setView={this.setView}
-            cartItem={this.state.cart} />
+          <Header items={this.state.cart.length} setView={this.setView}/>
           <ProductDetails productId={this.state.view.params.productId}
             setView={this.setView} addToCart={this.addToCart}/>
         </div>
