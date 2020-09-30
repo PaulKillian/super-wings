@@ -14,6 +14,7 @@ class App extends React.Component {
       cart: []
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   setView(name, params) {
@@ -40,7 +41,7 @@ class App extends React.Component {
 
   getCartItems() {
     fetch('/api/cart')
-      .then(res => res.json());
+      .then(res => res.json(res));
   }
 
   addToCart(product) {
@@ -50,25 +51,31 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(product)
-    })
-      .then(res => res.json())
-      .then()
-      .catch(error => console.error(error));
+    }).then(addedItem => {
+      let newItem = [];
+      if (this.state.cart.length === 0) {
+        newItem.push(product);
+      } else {
+        newItem = this.state.cart.concat(product);
+      }
+      this.setState({ cart: newItem });
+    }).catch(error => console.error(error));
   }
 
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header items={this.state.cart[0]}/>
+          <Header />
           <ProductList setView={this.setView} />
         </div>
       );
     } else {
       return (
         <div>
-          <Header />
-          <ProductDetails productId={this.state.view.params.productId} setView={this.setView} addToCart={this.addToCart}/>
+          <Header items={this.state.cart.length} />
+          <ProductDetails productId={this.state.view.params.productId}
+            setView={this.setView} addToCart={this.addToCart}/>
         </div>
       );
     }
