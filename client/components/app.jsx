@@ -22,21 +22,21 @@ class App extends React.Component {
     if (name === 'catalog') {
       this.setState({
         view: {
-          name: 'catalog',
+          name: name,
           params: {}
         }
       });
     } else if (name === 'cart') {
       this.setState({
         view: {
-          name: 'cart',
+          name: name,
           params: {}
         }
       });
     } else {
       this.setState({
         view: {
-          name: name,
+          name: 'details',
           params: params
         }
       });
@@ -49,7 +49,11 @@ class App extends React.Component {
 
   getCartItems() {
     fetch('/api/cart')
-      .then(res => res.json(res));
+      .then(res => res.json(res))
+      .then(receivedItems => {
+        this.setState({ cart: receivedItems });
+      })
+      .catch(error => console.error(error));
   }
 
   addToCart(product) {
@@ -59,22 +63,19 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(product)
-    }).then(addedItem => {
-      let newItem = [];
-      if (this.state.cart.length === 0) {
-        newItem.push(product);
-      } else {
-        newItem = this.state.cart.concat(product);
-      }
-      this.setState({ cart: newItem });
-    }).catch(error => console.error(error));
+    }).then(res => res.json())
+      .then(addedItem => {
+        const newItem = this.state.cart.slice();
+        newItem.push(addedItem);
+        this.setState({ cart: newItem });
+      }).catch(error => console.error(error));
   }
 
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header />
+          <Header items={this.state.cart.length} setView={this.setView}/>
           <ProductList setView={this.setView} />
         </div>
       );
@@ -82,15 +83,15 @@ class App extends React.Component {
       return (
         <div>
           <Header />
-          <CartSummary cartItem={this.state.cart} />
+          <CartSummary cartItem={this.state.cart} setView={this.setView} totalPrice={this.state.cart}/>
         </div>
       );
     } else {
       return (
         <div>
-          <Header items={this.state.cart.length} setView={this.setView}/>
+          <Header items={this.state.cart.length} setView={this.setView} />
           <ProductDetails productId={this.state.view.params.productId}
-            setView={this.setView} addToCart={this.addToCart}/>
+            setView={this.setView} addToCart={this.addToCart} />
         </div>
       );
     }

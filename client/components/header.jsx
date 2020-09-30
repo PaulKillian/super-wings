@@ -7,7 +7,7 @@ function Header(props) {
         <i className="fas fa-dollar-sign h-25 d-flex mt-3 ml-4 text-white"></i>
         <h2 className="mt-1 text-white">Wicked Sales</h2>
         <div className="d-flex justify-content-end col-9">
-          <button onClick={() => this.props.setView('cart', { params: {} })}>
+          <button onClick={() => props.setView('cart', { params: {} })}>
             {props.items} Item <i className="fas fa-shopping-cart"></i></button>
         </div>
       </div>
