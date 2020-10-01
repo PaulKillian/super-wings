@@ -8,9 +8,9 @@ function CartSummary(props) {
   }
   return (
     <>
-      <div className="col-12">
-        <p className="pointer" onClick={() => props.setView('catalog', {})}>Back To Catalog</p>
-        <h2>My Cart</h2>
+      <div className="col-11 container">
+        <p className="pointer col-11 container mt-5" onClick={() => props.setView('catalog', {})}>Back To Catalog</p>
+        <h2 className="row ml-5">My Cart</h2>
         {props.cartItem.map(item => {
           return (
             <CartSummaryItem

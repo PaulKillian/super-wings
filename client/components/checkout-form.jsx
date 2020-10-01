@@ -33,15 +33,24 @@ class CheckoutForm extends React.Component {
     });
   }
 
+  total(props) {
+    let newSummary = 0;
+    for (let i = 0; i < this.props.totalPrice.length; i++) {
+      newSummary += this.props.totalPrice[i].price;
+    }
+    return newSummary;
+  }
+
   render() {
     const name = this.state.name;
     const creditCard = this.state.creditCard;
     const shippingAddress = this.state.shippingAddress;
+    const total = this.total();
     return (
-      <>
-        <h2>My Cart</h2>
-        <h4>Order Total: $</h4>
-        <form className="container mt-">
+      <div className="container bg-muted">
+        <h2 className="row mt-5 pl-3">My Cart</h2>
+        <h6 className="row mt-4 pl-3 ml-4 text-muted">Order Total: ${total / 100} </h6>
+        <form>
           <div className="form-group">
             <label>Name</label>
             <input
@@ -75,12 +84,11 @@ class CheckoutForm extends React.Component {
           <div className="d-flex col-12 justify-content-between">
             <p className="pointer" onClick={() => this.props.setView('catalog', {})}>Continue Shopping</p>
             <button onClick={this.handleSubmit}
-              type="submit" className="btn btn-primary">
-              {/* // onClick={() => this.props.placeOrder(this.state)}>Place Order */}
-            </button>
+              type="submit" className="btn btn-primary"
+            >Place Order</button>
           </div>
         </form>
-      </>
+      </div>
     );
   }
 }
