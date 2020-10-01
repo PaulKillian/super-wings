@@ -89,10 +89,8 @@ app.post('/api/orders/', (req, res, next) => {
       returning *`;
     const params = [req.body.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
     db.query(orderEntry, params).then(result => {
-      if (result.rowCount === 1) {
-        delete req.session.cartId;
-        res.status(201).json(result.rows[0]);
-      }
+      delete req.session.cartId;
+      res.status(201).json(result.rows[0]);
     }).catch(err => next(err));
   }
 });

@@ -17,13 +17,16 @@ function CartSummary(props) {
               key={item.productId}
               image={item.image}
               name={item.name}
-              price={item.price}
+              price={item.price / 100}
               description={item.shortDescription}
             />
           );
         })}
       </div>
-      <h3>Item Total ${newSummary / 100}</h3>
+      <div className="d-flex justify-content-around">
+        <h3>Item Total ${newSummary / 100}</h3>
+        <button className="bg-primary" onClick={() => props.setView('checkout', {})}>Checkout</button>
+      </div>
     </>
   );
 }
