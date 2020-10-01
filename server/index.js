@@ -85,25 +85,15 @@ app.post('/api/orders/', (req, res, next) => {
   } else if (req.body.name && req.body.creditCard && req.body.shippingAddress) {
     const orderEntry = `
       insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
-      values ($1, $2, $3, $4)`;
+      values ($1, $2, $3, $4)
+      returning *`;
     const params = [req.body.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
     db.query(orderEntry, params).then(result => {
-      const order = `
-        select "createdAt",
-                  "creditCard",
-                  "name",
-                  "orderId",
-                  "shippingAddress"
-              from "orders"
-              where "cartId" = $1`;
-      const params1 = [req.body.cartId];
-      return db.query(order, params1).then(result1 => {
-        if (result.rowCount === 1) {
-          delete req.session.cartId;
-          res.status(201).json(result1.rows[0]);
-        }
-      });
-    });
+      if (result.rowCount === 1) {
+        delete req.session.cartId;
+        res.status(201).json(result.rows[0]);
+      }
+    }).catch(err => next(err));
   }
 });
 
