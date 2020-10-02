@@ -3,8 +3,8 @@ import CartSummaryItem from './cart-summary-item';
 
 function CartSummary(props) {
   let newSummary = 0;
-  for (let i = 0; i < props.totalPrice.length; i++) {
-    newSummary += props.totalPrice[i].price;
+  for (let i = 0; i < props.summaryPrice.length; i++) {
+    newSummary += props.summaryPrice[i].price;
   }
   return (
     <>
@@ -25,7 +25,7 @@ function CartSummary(props) {
       </div>
       <div className="d-flex justify-content-around">
         <h3>Item Total ${newSummary / 100}</h3>
-        <button className="bg-primary" onClick={() => props.setView('checkout', {})}>Checkout</button>
+        <button className="btn btn-primary" onClick={() => props.setView('checkout', {})}>Checkout</button>
       </div>
     </>
   );

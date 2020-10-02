@@ -83,7 +83,7 @@ class App extends React.Component {
         <div>
           <Header items={this.state.cart.length} />
           <CartSummary cartItem={this.state.cart} setView={this.setView}
-            totalPrice={this.state.cart}/>
+            summaryPrice={this.state.cart}/>
         </div>
       );
     } else if (this.state.view.name === 'checkout') {

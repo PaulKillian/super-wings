@@ -10,27 +10,10 @@ class CheckoutForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleReset = this.handleReset.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-  }
-
-  handleSubmit(event) {
-    this.setState({
-      name: '',
-      creditCard: '',
-      shippingAddress: ''
-    });
-  }
-
-  handleReset() {
-    this.setState({
-      name: '',
-      creditCard: '',
-      shipingAddress: ''
-    });
   }
 
   total(props) {
@@ -39,6 +22,21 @@ class CheckoutForm extends React.Component {
       newSummary += this.props.totalPrice[i].price;
     }
     return newSummary;
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const formData = {
+      name: this.state.name,
+      creditCard: this.state.creditCard,
+      shippingAddress: this.state.shippingAddress
+    };
+    this.props.placeOrder(formData);
+    this.setState({
+      name: '',
+      creditCard: '',
+      shippingAddress: ''
+    });
   }
 
   render() {
@@ -50,7 +48,7 @@ class CheckoutForm extends React.Component {
       <div className="container bg-muted">
         <h2 className="row mt-5 pl-3">My Cart</h2>
         <h6 className="row mt-4 pl-3 ml-4 text-muted">Order Total: ${total / 100} </h6>
-        <form>
+        <form onClick={this.handleSubmit}>
           <div className="form-group">
             <label>Name</label>
             <input
@@ -66,7 +64,7 @@ class CheckoutForm extends React.Component {
             <input
               type="text"
               className="form-control"
-              name="creditCard"
+              creditCard="creditcard"
               value={creditCard}
               onChange={this.handleChange}
               placeholder="Credit Card" />
@@ -76,16 +74,14 @@ class CheckoutForm extends React.Component {
             <textarea
               type="textarea"
               className="form-control"
-              name="shippingAddress"
+              shippingAddress="shippingaddress"
               value={shippingAddress}
               onChange={this.handleChange}
               placeholder="Shipping Address" />
           </div>
           <div className="d-flex col-12 justify-content-between">
             <p className="pointer" onClick={() => this.props.setView('catalog', {})}>Continue Shopping</p>
-            <button onClick={this.handleSubmit}
-              type="submit" className="btn btn-primary"
-            >Place Order</button>
+            <button className="btn btn-primary" onClick={this.handleSubmit}>Place Order</button>
           </div>
         </form>
       </div>
