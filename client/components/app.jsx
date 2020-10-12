@@ -65,8 +65,10 @@ class App extends React.Component {
       },
       body: JSON.stringify(formData)
     }).then(result => {
-      this.props.setView('catalog', {});
-      this.setState({ cart: [] });
+      this.setState({
+        view: { name: 'catalog', params: {} },
+        cart: []
+      });
     }).catch(error => console.error(error));
   }
 
@@ -91,7 +93,7 @@ class App extends React.Component {
         <div>
           <Header items={this.state.cart.length} />
           <CheckoutForm cartItem={this.state.cart} setView={this.setView}
-            totalPrice={this.state.cart}placeOrder={this.placeOrder}/>
+            totalPrice={this.state.cart} placeOrder={this.placeOrder}/>
         </div>
       );
     } else {
