@@ -4,7 +4,7 @@ body {
 
 img {
 	height: 300px;
-	width: 308px;
+	width: 331px;
 	object-fit: scale-down;
 	position: relative;
 	right: 15px;
@@ -12,4 +12,8 @@ img {
 
 .pointer {
 	cursor: pointer;
+}
+
+.width {
+	width: 300px
 }

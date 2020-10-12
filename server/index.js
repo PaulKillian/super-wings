@@ -79,22 +79,31 @@ app.get('/api/cart', (req, res, next) => {
   }
 });
 
-app.post('/api/orders/', (req, res, next) => {
+app.post('/api/orders', (req, res, next) => {
   if (!req.session.cartId) {
-    throw new ClientError('Order does not exist', 400);
-  } else if (req.body.name && req.body.creditCard && req.body.shippingAddress) {
-    const orderEntry = `
-      insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
-      values ($1, $2, $3, $4)
-      returning *`;
-    const params = [req.body.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
-    db.query(orderEntry, params).then(result => {
-      if (result.rowCount === 1) {
-        delete req.session.cartId;
-        res.status(201).json(result.rows[0]);
-      }
-    }).catch(err => next(err));
+    throw new ClientError('CartId does not exist', 400);
   }
+
+  const data = req.body;
+
+  if (
+    typeof data.name === 'undefined' || typeof data.creditCard === 'undefined' ||
+    typeof data.shippingAddress === 'undefined'
+  ) {
+    throw new ClientError('Missing required value', 400);
+  }
+
+  const sql = `
+    insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+    values ($1, $2, $3, $4)
+    returning "orderId", "createdAt", "name", "creditCard", "shippingAddress";
+  `;
+  const params = [req.session.cartId, data.name, data.creditCard, data.shippingAddress];
+
+  db.query(sql, params).then(result => {
+    delete req.session.cartId;
+    return res.status(201).json(result.rows[0]);
+  });
 });
 
 app.post('/api/cart/', (req, res, next) => {
