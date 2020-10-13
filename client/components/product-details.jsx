@@ -21,16 +21,17 @@ class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="bg-light col-11 container pt-5 pb-5">
-          <div className="col-10 container shadow border">
+        <div className="bg-light col-11 container pt-5 pb-5 image-box">
+          <div className="col-10 container shadow border item-color">
             <div className="ml-l">
-              <p className="pointer mt-4" onClick={() => this.props.setView('catalog', {})}>Back to Catalog</p>
+              <p className="pointer mt-4" onClick={() => this.props.setView('catalog', {})}>
+                <i className="fas fa-arrow-circle-left mr-1"></i>Back to Catalog</p>
               <div className="d-flex flex-wrap">
-                <img className="ml-4 bg-light" src={this.state.product.image}></img>
+                <img className="ml-4 bg-light detail-img" src={this.state.product.image}></img>
                 <div>
                   <h3>{this.state.product.name}</h3>
                   <h5 className="text-muted">${this.state.product.price / 100}</h5>
-                  <button className="bg-primary text-white" onClick={() => this.props.addToCart(this.state.product)}>Add To Cart</button>
+                  <button className="btn btn-primary text-white" onClick={() => this.props.addToCart(this.state.product)}>Add To Cart</button>
                   <p>{this.state.product.shortDescription}</p>
                 </div>
               </div>

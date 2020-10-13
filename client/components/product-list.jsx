@@ -26,8 +26,8 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="bg-muted col-11 container col-sm-12">
-        <div className="d-flex flex-wrap justify-content-center col-12 ml-4">
+      <div className="bg-muted col-12 image-box pt-5 pb-5">
+        <div className="d-flex col-12 flex-wrap justify-content-center col-12 ml-4">
           {this.state.products.map(product => {
             return (
               <ProductListItem
