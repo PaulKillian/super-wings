@@ -21,13 +21,13 @@ class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="bg-light col-12 container pt-5 pb-5 image-box">
+        <div className="bg-light col-12 container pt-5 pb-5 image-box detail">
           <div className="col-11 container shadow border item-color">
             <div className="ml-l">
               <p className="pointer mt-4" onClick={() => this.props.setView('catalog', {})}>
                 <i className="fas fa-arrow-circle-left mr-1"></i>Back to Catalog</p>
               <div className="d-flex flex-wrap">
-                <img className="ml-4 detail-img" src={this.state.product.image}></img>
+                <img className="mx-3 detail-img" src={this.state.product.image}></img>
                 <div>
                   <h3>{this.state.product.name}</h3>
                   <h5 className="text-muted">${this.state.product.price / 100}</h5>
