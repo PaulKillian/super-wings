@@ -33,7 +33,7 @@ class Modal extends React.Component {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="d-flex justify-content-center">
-              <img className="modal-title" src="/images/Paul.jpg"></img>
+              <img className="modal-title modal-img" src="/images/Paul.jpg"></img>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">

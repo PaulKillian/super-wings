@@ -15,7 +15,7 @@ img {
 	width: 270px;
 	object-fit: scale-down;
 	position: relative;
-	right: 15px;
+	left: 6px;
 }
 
 .pointer {
@@ -47,7 +47,9 @@ img {
   display: flex;
   align-items: center;
 	justify-content: center;
-	width: 100%;
+  width: 1263px;
+	overflow: hidden;
+	margin-left: 0px;
 }
 
 .item-color {
@@ -62,4 +64,38 @@ img {
 
 .margin {
 	margin-left: 12px
+}
+
+.modal-img {
+	height: 200px
+}
+
+/* @media only screen and (max-width: 1024px) {
+  .image-box {
+    width: 1024px;
+  }
+}
+
+@media only screen and (max-width: 667px) {
+  .image-box {
+    width: 667px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .image-box {
+    width: 375px;
+  }
+} */
+
+@media only screen and (min-width: 1024px) {
+  .image-box {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .image-box {
+    width: 100%;
+  }
 }
