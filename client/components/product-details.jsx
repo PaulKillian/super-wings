@@ -21,8 +21,8 @@ class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="bg-light col-11 container pt-5 pb-5 image-box">
-          <div className="col-10 container shadow border item-color">
+        <div className="bg-light col-12 container pt-5 pb-5 image-box">
+          <div className="col-11 container shadow border item-color">
             <div className="ml-l">
               <p className="pointer mt-4" onClick={() => this.props.setView('catalog', {})}>
                 <i className="fas fa-arrow-circle-left mr-1"></i>Back to Catalog</p>

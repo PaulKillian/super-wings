@@ -46,6 +46,9 @@ class CheckoutForm extends React.Component {
         <h2 className="col-11 mt-5 pl-3">My Cart</h2>
         <h6 className="col-11 mt-4 pl-4 pb-2 ml-4 text-light">Order Total: ${total / 100} </h6>
         <form className="col-11" onSubmit={this.handleSubmit}>
+          <div>
+            <h5 className="d-flex justify-content-end">Please do not use your personal information as this is not a real store</h5>
+          </div>
           <div className="form-group">
             <label>Name</label>
             <input
@@ -76,10 +79,10 @@ class CheckoutForm extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="d-flex col-11 justify-content-between">
+          <div className="d-flex col-12 justify-content-between">
             <p className="pointer" onClick={() => this.props.setView('catalog', {})}>
               <i className="fas fa-arrow-circle-left mr-1"></i>Continue Shopping</p>
-            <button type="submit" className="btn btn-primary
+            <button type="submit" className="btn btn-primary ml-5
             ">Place Order</button>
           </div>
         </form>
