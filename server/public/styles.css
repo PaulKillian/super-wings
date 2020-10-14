@@ -2,9 +2,16 @@ body {
 	font-size: medium;
 }
 
+.detail-img {
+  height: 300px;
+	width: 240px;
+	object-fit: scale-down;
+	position: relative;
+}
+
 img {
 	height: 300px;
-	width: 331px;
+	width: 270px;
 	object-fit: scale-down;
 	position: relative;
 	right: 15px;
@@ -16,4 +23,38 @@ img {
 
 .width {
 	width: 300px
+}
+
+.header-image {
+	background-image: url(/images/26b8b98aea4840e99c12910e7d05ba48.w2913.h666._CR0,56,2913,583_SX1920_.jpg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.color {
+	background-color: rgb(22, 22, 221);
+}
+
+.image-box {
+	background: linear-gradient(
+	rgba(2, 2, 2, 0.75),
+	rgba(2, 2, 2, 0.75)
+	),
+	url(/images/wp3294707-super-wings-wallpapers.jpg);
+  background-size: cover;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.item-color {
+	background-color: white;
+}
+
+.fixed {
+	position: sticky;
+  top: 0;
+  z-index: 1020;
 }
