@@ -100,10 +100,12 @@ app.post('/api/orders', (req, res, next) => {
   `;
   const params = [req.session.cartId, data.name, data.creditCard, data.shippingAddress];
 
-  db.query(sql, params).then(result => {
-    delete req.session.cartId;
-    return res.status(201).json(result.rows[0]);
-  });
+  db.query(sql, params)
+    .then(result => {
+      delete req.session.cartId;
+      return res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
 });
 
 app.post('/api/cart/', (req, res, next) => {
