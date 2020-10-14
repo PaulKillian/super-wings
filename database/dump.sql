@@ -253,7 +253,7 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Jett	1099	/images/61STztKgShL._AC_SL1131_.jpg	Jett is positive, Jett is full of curiosity and never hesitates to try new things.	Join Jett and his loveable transforming friends, the Super Wings, as they travel the globe to deliver packages, solve problems and help boys and girls around the world!
+1	Jett	1199	/images/61STztKgShL._AC_SL1131_.jpg	Jett is positive, Jett is full of curiosity and never hesitates to try new things.	Join Jett and his loveable transforming friends, the Super Wings, as they travel the globe to deliver packages, solve problems and help boys and girls around the world!
 2	Jerome	1499	/images/618IQ1KMSvL._AC_SL1250_.jpg	Jerome is the stunt flyer of the Super Wings team.	Jerome He knows every dance style and often teaches others fun dance moves on the hit preschool Super Wings show. He is a born entertainer, enjoys the spotlight and loves to compete with his friend jett. But whenever jett needs help, Jerome is always there for him!
 3	Mira	984	/images/61KoIOnvTML._AC_SL1347_.jpg	Time to make a splash!	Even though she's an airplane, Mira likes water more than anything in the world on the hit preschool show “Super Wings”. she's at her absolute best when underwater and she's great at diving deep down under the sea.
 4	Paul	1199	/images/61+H-8wiRfL._AC_SL1181_.jpg	Paul is a policeman with a strong sense of duty.	Paul is so enthusiastic that he acts like a policeman even when there's no policing to be done! Within the Super Wings team, he's known as being quite playful and silly.
@@ -332,4 +332,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-
