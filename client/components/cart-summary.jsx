@@ -8,7 +8,7 @@ function CartSummary(props) {
   }
   return (
     <>
-      <div className="col-12 image-box pb-2 d-flex flex-column">
+      <div className="image-box pb-2 d-flex flex-column">
         <p className="pointer col-11 container mt-5 text-white" onClick={() => props.setView('catalog', {})}>
           <i className="fas fa-arrow-circle-left mr-1"></i>Back To Catalog</p>
         <h2 className="col-11 ml-5 text-white">My Cart</h2>
