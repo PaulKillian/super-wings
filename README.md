@@ -28,4 +28,4 @@ Try the application live at https://superwings.pkillian.com/
 - User can place an order - Back End.
 - User can place an order - Front End.
 
-![App GIF](https://github.com/PaulKillian/instant-recipe/blob/master/app%20demo.gif)
+![App GIF](https://github.com/PaulKillian/wicked-sales-js/blob/master/super.gif)
