@@ -3,7 +3,7 @@ import React from 'react';
 function CartSummaryItem(props) {
   return (
     <div className="ml-3 mt-2">
-      <div className="row d-flex shadow margin mr-5 item-color">
+      <div className="row d-flex shadow margin mr-4 item-color">
         <img className="col-lg-5 pt-3 pb-3" src={props.image}></img>
         <div>
           <div>
