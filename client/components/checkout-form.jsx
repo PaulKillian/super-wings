@@ -57,6 +57,7 @@ class CheckoutForm extends React.Component {
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -67,6 +68,7 @@ class CheckoutForm extends React.Component {
               name="creditCard"
               value={this.state.creditCard}
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -77,6 +79,7 @@ class CheckoutForm extends React.Component {
               name="shippingAddress"
               value={this.state.shippingAddress}
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="d-flex col-12 justify-content-between">
