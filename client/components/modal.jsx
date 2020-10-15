@@ -29,7 +29,7 @@ class Modal extends React.Component {
 
   render() {
     return (
-      <div className={`modal fade ${(!this.state.isHidden ? 'show d-block' : 'd-none')}`} tabIndex="-1" role="dialog" aria-hidden="true">
+      <div className={`modal fade modal-overlay ${(!this.state.isHidden ? 'show d-block' : 'd-none')}`} tabIndex="-1" role="dialog" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="d-flex justify-content-center">
