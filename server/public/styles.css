@@ -98,3 +98,9 @@ img {
     width: 100%;
   }
 }
+
+@media only screen and (min-width: 1902px) {
+  .contain {
+    min-width: 1394px;
+  }
+}
