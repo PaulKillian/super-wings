@@ -1,6 +1,4 @@
 # wicked-sales-js
-A full stack Node.js and React shopping cart app.
-
 A full stack demo of a Super Wings shopping cart application built with Node.js & React, 
 
 # Technologies Used
