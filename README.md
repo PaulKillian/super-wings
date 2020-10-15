@@ -32,4 +32,4 @@ Try the application live at https://superwings.pkillian.com/
 - User can update products in cart - Back End.
 - User can update products in cart - Front End.
 - User can delete items from cart - Back End.
-User can delete items from cart - Front End.
+- User can delete items from cart - Front End.
